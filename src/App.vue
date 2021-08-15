@@ -35,20 +35,17 @@
 
     <v-main>
       <Form />
-      <HelloWorld />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld";
 import Form from "./components/Form";
 
 export default {
   name: "App",
 
   components: {
-    HelloWorld,
     Form,
   },
 
