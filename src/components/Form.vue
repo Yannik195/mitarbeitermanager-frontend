@@ -73,6 +73,9 @@
           @change="save"
         ></v-date-picker>
       </v-menu>
+
+      <!-- Submit -->
+      <v-btn type="submit" color="primary" x-large> Add Employee </v-btn>
     </v-container>
   </v-form>
 </template>
