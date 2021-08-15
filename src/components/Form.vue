@@ -31,6 +31,16 @@
           ></v-text-field>
         </v-col>
       </v-row>
+
+      <!-- Gender -->
+      <v-select
+        v-model="select"
+        :items="gender"
+        :error-messages="errors"
+        label="Gender"
+        data-vv-name="select"
+        required
+      ></v-select>
     </v-container>
   </v-form>
 </template>
@@ -50,6 +60,7 @@ export default {
       (v) => !!v || "E-mail is required",
       (v) => /.+@.+/.test(v) || "E-mail must be valid",
     ],
+    gender: ["Male", "Female", "Diverse"],
   }),
 };
 </script>
