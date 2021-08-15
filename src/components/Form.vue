@@ -66,7 +66,7 @@
               ></v-text-field>
             </template>
             <v-date-picker
-              v-model="date"
+              v-model="birthdate"
               :active-picker.sync="activePicker"
               :max="
                 new Date(Date.now() - new Date().getTimezoneOffset() * 60000)
@@ -83,7 +83,12 @@
       <v-row>
         <v-col>
           <!-- Submit -->
-          <v-btn type="submit" color="primary" x-large style="float: right">
+          <v-btn
+            @click="postEmployee"
+            color="primary"
+            x-large
+            style="float: right"
+          >
             Add Employee
           </v-btn>
         </v-col>
@@ -93,6 +98,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data: () => ({
     valid: false,
@@ -109,7 +116,7 @@ export default {
     ],
     gender: ["Male", "Female", "Diverse"],
     activePicker: null,
-    date: null,
+    birthdate: null,
     menu: false,
   }),
   watch: {
@@ -120,6 +127,20 @@ export default {
   methods: {
     save(date) {
       this.$refs.menu.save(date);
+    },
+    postEmployee: function () {
+      axios
+        .post("http://localhost:3000/employees/", {
+          firstname: this.firstname,
+          lastname: this.lastname,
+          email: this.email,
+        })
+        .then((response) => {
+          console.log(response);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
 };
