@@ -34,7 +34,6 @@
     </v-app-bar>
 
     <v-main>
-      Hallo Mitarbeiter!
       <Form />
       <HelloWorld />
     </v-main>
