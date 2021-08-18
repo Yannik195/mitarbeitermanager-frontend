@@ -3,6 +3,8 @@
     <h1>This is the Overview</h1>
     {{ response.data }}
 
+    <v-data-table :headers="headers" :items="response.data"> </v-data-table>
+
     <router-link to="/add">
       <v-btn elevation="2" fab>
         <v-icon>mdi-plus</v-icon>
@@ -18,9 +20,20 @@ export default {
   name: "EmployeeOverview",
   data() {
     return {
-      name: "Yannik",
-      lastname: "Simon",
       response: null,
+
+      // Table Headers
+      headers: [
+        {
+          text: "Firstname",
+          align: "start",
+          sortable: false,
+          value: "firstname",
+        },
+        { text: "Lastname", sortable: false, value: "lastname" },
+        { text: "Age", sortable: false, value: "age" },
+        { text: "E-Mail", sortable: false, value: "email" },
+      ],
     };
   },
   computed: {},
