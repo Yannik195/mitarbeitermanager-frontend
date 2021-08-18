@@ -3,7 +3,12 @@
     <h1>This is the Overview</h1>
     {{ response.data }}
 
-    <v-data-table :headers="headers" :items="response.data"> </v-data-table>
+    <v-data-table
+      :headers="headers"
+      :items="response.data"
+      :items-per-page="20"
+    >
+    </v-data-table>
 
     <router-link to="/add">
       <v-btn elevation="2" fab>

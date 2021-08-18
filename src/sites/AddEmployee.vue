@@ -83,14 +83,23 @@
       <v-row>
         <v-col>
           <!-- Submit -->
-          <v-btn
-            @click="postEmployee"
-            color="primary"
-            x-large
-            style="float: right"
-          >
-            Add Employee
-          </v-btn>
+          <router-link to="/overview">
+            <v-btn
+              class="ma-2"
+              @click="postEmployee"
+              color="primary"
+              style="float: right"
+            >
+              Add Employee
+            </v-btn>
+          </router-link>
+
+          <!-- Cancel -->
+          <router-link to="/overview">
+            <v-btn class="ma-2" color="grey" style="float: right">
+              Cancel
+            </v-btn>
+          </router-link>
         </v-col>
       </v-row>
     </v-container>
