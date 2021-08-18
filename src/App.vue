@@ -18,20 +18,16 @@
     </v-app-bar>
 
     <v-main>
-      <Form />
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import Form from "./components/Form";
-
 export default {
   name: "App",
 
-  components: {
-    Form,
-  },
+  components: {},
 
   data: () => ({
     //
