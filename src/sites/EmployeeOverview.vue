@@ -1,8 +1,5 @@
 <template>
   <div>
-    <h1>This is the Overview</h1>
-    {{ response.data }}
-
     <v-data-table
       :headers="headers"
       :items="response.data"
@@ -11,7 +8,7 @@
     </v-data-table>
 
     <router-link to="/add">
-      <v-btn elevation="2" fab>
+      <v-btn class="btn" elevation="2" fab>
         <v-icon>mdi-plus</v-icon>
       </v-btn>
     </router-link>
@@ -52,4 +49,8 @@ export default {
 </script>
 
 <style>
+.btn {
+  float: right;
+  position: fixed;
+}
 </style>

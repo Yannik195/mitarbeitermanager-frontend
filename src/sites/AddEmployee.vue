@@ -6,7 +6,6 @@
           <v-text-field
             v-model="firstname"
             :rules="nameRules"
-            :counter="10"
             label="First name"
             required
           ></v-text-field>
@@ -16,7 +15,6 @@
           <v-text-field
             v-model="lastname"
             :rules="nameRules"
-            :counter="10"
             label="Last name"
             required
           ></v-text-field>
@@ -36,8 +34,8 @@
         <v-col>
           <!-- Gender -->
           <v-select
-            v-model="select"
-            :items="gender"
+            v-model="gender"
+            :items="genderlist"
             :error-messages="errors"
             label="Gender"
             data-vv-name="select"
@@ -57,8 +55,8 @@
           >
             <template v-slot:activator="{ on, attrs }">
               <v-text-field
-                v-model="date"
-                label="Birthday date"
+                v-model="birthdate"
+                label="Birthdate"
                 prepend-icon="mdi-calendar"
                 readonly
                 v-bind="attrs"
@@ -80,6 +78,30 @@
         </v-col>
       </v-row>
 
+      <!-- //Salary -->
+      <v-autocomplete
+        v-model="salary"
+        label="Salary"
+        prefix="€"
+        :items="[
+          '10.000',
+          '20.000',
+          '30.000',
+          '40.000',
+          '50.000',
+          '60.000',
+          '70.000',
+        ]"
+      >
+      </v-autocomplete>
+
+      <!-- Position -->
+      <v-autocomplete
+        v-model="position"
+        :items="['Accountant', 'CEO', 'Web Developer']"
+        label="Position"
+      ></v-autocomplete>
+
       <v-row>
         <v-col>
           <!-- Submit -->
@@ -93,7 +115,6 @@
               Add Employee
             </v-btn>
           </router-link>
-
           <!-- Cancel -->
           <router-link to="/overview">
             <v-btn class="ma-2" color="grey" style="float: right">
@@ -123,10 +144,12 @@ export default {
       (v) => !!v || "E-mail is required",
       (v) => /.+@.+/.test(v) || "E-mail must be valid",
     ],
-    gender: ["Male", "Female", "Diverse"],
+    genderlist: ["Male", "Female", "Diverse"],
+    gender: null,
     activePicker: null,
     birthdate: null,
     menu: false,
+    employeesince: null,
   }),
   watch: {
     menu(val) {
@@ -143,6 +166,15 @@ export default {
           firstname: this.firstname,
           lastname: this.lastname,
           email: this.email,
+          gender: this.gender,
+          birthdate: this.birthdate,
+          salary: this.salary,
+          position: this.position,
+          street: "Augustenstraße",
+          number: 37,
+          postcode: 70178,
+          country: "Germany",
+          phone: 2453453513,
         })
         .then((response) => {
           console.log(response);
