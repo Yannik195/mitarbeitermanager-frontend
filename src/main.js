@@ -12,10 +12,14 @@ Vue.use(VueRouter)
 //Components
 import AddEmployee from "./sites/AddEmployee.vue"
 import EmployeeOverview from "./sites/EmployeeOverview.vue"
+import Login from "./sites/Login.vue"
+import Signup from "./sites/Signup.vue"
 
 const routes = [
   { path: "/add", component: AddEmployee },
-  { path: "/overview", component: EmployeeOverview }
+  { path: "/overview", component: EmployeeOverview },
+  { path: "/login", component: Login },
+  { path: "/signup", component: Signup }
 ]
 
 const router = new VueRouter({

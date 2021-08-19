@@ -24,13 +24,10 @@
           outlined
         ></v-text-field>
 
-        <v-btn class="mr-2" color="primary">Login</v-btn>
-        <v-btn text color="primary" @click="$router.push('signup')"
-          >Create account</v-btn
-        >
+        <v-btn class="mr-2" color="primary">Create Account</v-btn>
+        <v-btn text color="primary" @click="$router.push('login')">Login</v-btn>
       </v-form>
     </v-card>
-    <div class="bg"></div>
   </div>
 </template>
 
@@ -64,11 +61,5 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.card {
-}
-
-.bg {
 }
 </style>
