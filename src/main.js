@@ -26,8 +26,11 @@ const router = new VueRouter({
   routes,
   mode: 'history',
 })
+
 new Vue({
   vuetify,
   router,
   render: h => h(App)
 }).$mount('#app')
+
+module.exports = router;
