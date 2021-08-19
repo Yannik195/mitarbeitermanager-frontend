@@ -3,7 +3,7 @@
     <v-card class="card py-8 px-4 ma-4">
       <v-form>
         <v-text-field
-          v-model="mail"
+          v-model="email"
           outlined
           label="Email"
           append-icon="mdi-email"
@@ -24,7 +24,9 @@
           outlined
         ></v-text-field>
 
-        <v-btn class="mr-2" color="primary">Create Account</v-btn>
+        <v-btn class="mr-2" color="primary" @click="signup"
+          >Create Account</v-btn
+        >
         <v-btn text color="primary" @click="$router.push('login')">Login</v-btn>
       </v-form>
     </v-card>
@@ -32,6 +34,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "Login",
   data() {
@@ -41,7 +45,7 @@ export default {
       show3: false,
       show4: false,
       password: "",
-      mail: "",
+      email: "",
       rules: {
         required: (value) => !!value || "Password is required.",
         min: (v) => v.length >= 8 || "Min 8 characters",
@@ -52,6 +56,19 @@ export default {
         (v) => /.+@.+/.test(v) || "E-mail must be valid",
       ],
     };
+  },
+  methods: {
+    signup: function () {
+      const data = { email: this.email, password: this.password };
+      axios
+        .post("http://localhost:3000/auth/signup", data)
+        .then((result) => {
+          console.log(result);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
 };
 </script>

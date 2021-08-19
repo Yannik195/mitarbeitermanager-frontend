@@ -62,7 +62,7 @@ export default {
     login: function () {
       const data = { email: this.email, password: this.password };
       axios
-        .post("http://localhost:3000/login", data)
+        .post("http://localhost:3000/auth/login", data)
         .then((result) => {
           console.log(result);
         })
