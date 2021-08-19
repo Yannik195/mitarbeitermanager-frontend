@@ -1,9 +1,22 @@
 <template>
   <div>
+    <v-text-field
+      class="ma-3"
+      v-model="search"
+      append-icon="mdi-magnify"
+      label="Search"
+      single-line
+      hide-details
+      solo
+    ></v-text-field>
+
     <v-data-table
       :headers="headers"
       :items="response.data"
       :items-per-page="20"
+      :search="search"
+      hide-default-footer
+      class="elevation-1 ma-3"
     >
     </v-data-table>
 
@@ -33,15 +46,17 @@ export default {
           value: "firstname",
         },
         { text: "Lastname", sortable: false, value: "lastname" },
+        { text: "Gender", sortable: false, value: "gender" },
         { text: "Birthdate", sortable: false, value: "birthdate" },
         { text: "E-Mail", sortable: false, value: "email" },
-        { text: "Gender", sortable: false, value: "gender" },
+        { text: "Position", sortable: false, value: "position" },
+        { text: "Phone", sortable: false, value: "phone" },
         { text: "Street", sortable: false, value: "street" },
         { text: "Number", sortable: false, value: "number" },
         { text: "Postcode", sortable: false, value: "postcode" },
         { text: "Country", sortable: false, value: "country" },
-        { text: "Phone", sortable: false, value: "phone" },
       ],
+      search: "",
     };
   },
   computed: {},
