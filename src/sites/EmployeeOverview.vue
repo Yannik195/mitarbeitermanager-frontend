@@ -63,32 +63,28 @@ export default {
   computed: {},
   watch: {},
   methods: {
-    methods: {
-      getEmployees: function () {
-        axios
-          .get("http://localhost:3000/employees/")
-          .then((response) => (this.response = response));
-      },
-      getUserData: function () {
-        let self = this;
-        axios
-          .get("http://localhost:3000/auth")
-          .then((response) => {
-            console.log(response);
-            self.$set(this, "user", response.data.user);
-          })
-          .catch((errors) => {
-            console.log(errors);
-            router.push("/");
-          });
-      },
+    getEmployees: function () {
+      axios
+        .get("http://localhost:3000/employees/")
+        .then((response) => (this.response = response));
+    },
+    getUserData: function () {
+      let self = this;
+      axios
+        .get("http://localhost:3000/auth/")
+        .then((response) => {
+          console.log(response);
+          self.$set(this, "user", response.data.user);
+        })
+        .catch((errors) => {
+          console.log(errors);
+          router.push("/");
+        });
     },
   },
   mounted() {
     this.getUserData();
-    axios
-      .get("http://localhost:3000/employees/")
-      .then((response) => (this.response = response));
+    this.getEmployees();
   },
 };
 </script>
