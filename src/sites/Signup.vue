@@ -64,6 +64,9 @@ export default {
         .post("http://localhost:3000/auth/signup", data)
         .then((result) => {
           console.log(result);
+          const accessToken = result.data.accessToken;
+          localStorage.setItem("access-token", accessToken);
+          this.$router.push("/overview");
         })
         .catch((err) => {
           console.log(err);

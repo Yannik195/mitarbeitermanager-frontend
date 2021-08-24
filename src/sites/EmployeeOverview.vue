@@ -30,7 +30,7 @@
 
 <script>
 import axios from "axios";
-const router = require("../main.js");
+// const router = require("../main.js");
 
 export default {
   name: "EmployeeOverview",
@@ -64,30 +64,17 @@ export default {
   watch: {},
   methods: {
     getEmployees: function () {
-      console.log("getEmployees" + this.$store.state.accessToken);
+      console.log("getEmployees" + localStorage.getItem("access-token"));
       const config = {
-        headers: { authorization: this.$store.state.accessToken },
+        headers: { authorization: localStorage.getItem("access-token") },
       };
       axios
         .get("http://localhost:3000/employees/", config)
-        .then((response) => (this.response = response));
-    },
-    getUserData: function () {
-      console.log("overview: " + this.$store.state.accessToken);
-      let self = this;
-      const config = {
-        headers: { authorization: this.$store.state.accessToken },
-      };
-      axios
-        .get("http://localhost:3000/auth/", config)
-        .then((response) => {
-          console.log(response);
-          self.$set(this, "user", response.data.user);
+        .catch((err) => {
+          console.log(err.response);
+          this.$router.push("/login");
         })
-        .catch((errors) => {
-          console.log(errors);
-          router.push("/");
-        });
+        .then((response) => (this.response = response));
     },
   },
   mounted() {

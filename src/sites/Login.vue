@@ -69,6 +69,7 @@ export default {
           this.$store.commit("updateAccessToken", { accessToken });
           console.log(this.$store.state);
           this.$router.push("/overview");
+          localStorage.setItem("access-token", accessToken);
         })
         .catch((err) => {
           console.log(err);
