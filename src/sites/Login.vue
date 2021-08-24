@@ -64,7 +64,7 @@ export default {
       axios
         .post("http://localhost:3000/auth/login", data)
         .then((result) => {
-          console.log(result);
+          console.log(result.data.accessToken);
         })
         .catch((err) => {
           console.log(err);
