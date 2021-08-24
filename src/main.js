@@ -5,6 +5,20 @@ import vuetify from './plugins/vuetify'
 
 Vue.config.productionTip = false
 
+// Vuex
+import Vuex from "vuex"
+Vue.use(Vuex)
+
+const store = new Vuex.Store({
+  state: {
+    accessToken: null,
+  },
+  mutations: {
+    updateAccessToken(state, payload) {
+      state.accessToken = payload.accessToken
+    }
+  }
+})
 
 //Vue-Router
 import VueRouter from "vue-router"
@@ -30,6 +44,7 @@ const router = new VueRouter({
 new Vue({
   vuetify,
   router,
+  store,
   render: h => h(App)
 }).$mount('#app')
 

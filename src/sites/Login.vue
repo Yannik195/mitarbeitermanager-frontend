@@ -65,6 +65,10 @@ export default {
         .post("http://localhost:3000/auth/login", data)
         .then((result) => {
           console.log(result.data.accessToken);
+          const accessToken = result.data.accessToken;
+          this.$store.commit("updateAccessToken", { accessToken });
+          console.log(this.$store.state);
+          this.$router.push("/overview");
         })
         .catch((err) => {
           console.log(err);

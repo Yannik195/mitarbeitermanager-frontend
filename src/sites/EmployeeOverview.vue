@@ -64,14 +64,22 @@ export default {
   watch: {},
   methods: {
     getEmployees: function () {
+      console.log("getEmployees" + this.$store.state.accessToken);
+      const config = {
+        headers: { authorization: this.$store.state.accessToken },
+      };
       axios
-        .get("http://localhost:3000/employees/")
+        .get("http://localhost:3000/employees/", config)
         .then((response) => (this.response = response));
     },
     getUserData: function () {
+      console.log("overview: " + this.$store.state.accessToken);
       let self = this;
+      const config = {
+        headers: { authorization: this.$store.state.accessToken },
+      };
       axios
-        .get("http://localhost:3000/auth/")
+        .get("http://localhost:3000/auth/", config)
         .then((response) => {
           console.log(response);
           self.$set(this, "user", response.data.user);
@@ -83,7 +91,7 @@ export default {
     },
   },
   mounted() {
-    this.getUserData();
+    // this.getUserData();
     this.getEmployees();
   },
 };
