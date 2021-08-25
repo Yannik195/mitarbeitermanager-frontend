@@ -119,18 +119,16 @@
       <v-row>
         <v-col>
           <!-- Submit -->
-          <router-link to="/overview">
-            <v-btn
-              class="ma-2"
-              @click="postEmployee"
-              color="primary"
-              style="float: right"
-            >
-              Add Employee
+          <v-btn
+            class="ma-2"
+            @click="postEmployee"
+            color="primary"
+            style="float: right"
+          >
+            Add Employee
 
-              <v-icon dark right> mdi-checkbox-marked-circle </v-icon>
-            </v-btn>
-          </router-link>
+            <v-icon dark right> mdi-checkbox-marked-circle </v-icon>
+          </v-btn>
 
           <!-- Insert Dummy Data -->
           <v-btn
@@ -461,6 +459,7 @@ export default {
         })
         .then((response) => {
           console.log(response);
+          this.$router.push("/overview");
         })
         .catch((err) => {
           console.log(err);

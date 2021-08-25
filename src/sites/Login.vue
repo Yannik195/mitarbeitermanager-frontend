@@ -1,7 +1,10 @@
 <template>
   <div class="containerr">
     <v-form class="form pa-4 ma-4">
-      <h1 class="mb-8 mt-4">Welcome back!</h1>
+      <h1 class="mb-7 mt-2" v-if="!alert">Welcome back!</h1>
+      <v-alert class="mb-10" type="error" elevation="3" :value="alert">{{
+        errorMessage
+      }}</v-alert>
 
       <v-text-field
         v-model="email"
@@ -25,7 +28,7 @@
         outlined
       ></v-text-field>
 
-      <v-btn color="primary mt-4" @click="login" block>Login</v-btn>
+      <v-btn color="primary mt-3" @click="login" block>Login</v-btn>
       <v-btn
         class="mt-4"
         text
@@ -61,6 +64,8 @@ export default {
         (v) => !!v || "E-mail is required",
         (v) => /.+@.+/.test(v) || "E-mail must be valid",
       ],
+      alert: false,
+      errorMessage: "Error",
     };
   },
   methods: {
@@ -89,9 +94,23 @@ export default {
         // log error: wrong email / password
         // todo show ui what went wrong
         .catch((err) => {
-          console.log(err);
+          console.log(err.response.status);
+          this.errorMessage = err.response.data;
+          this.alert = true;
         });
     },
+    hide_alert: function () {
+      // `event` is the native DOM event
+      // window.setInterval(() => {
+      //   this.alert = false;
+      //   console.log("hide alert after 3 seconds");
+      // }, 5000);
+    },
+  },
+  mounted() {
+    // if (alert) {
+    //   this.hide_alert();
+    // }
   },
 };
 </script>

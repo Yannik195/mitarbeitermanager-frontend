@@ -94,6 +94,10 @@ export default {
         })
         .then((response) => (this.response = response));
     },
+    logout: function () {
+      this.$router.push("/login");
+      localStorage.clear();
+    },
   },
   mounted() {
     this.getEmployees();
