@@ -28,7 +28,7 @@
         outlined
       ></v-text-field>
 
-      <v-btn color="primary mt-3" @click="login" block>Login</v-btn>
+      <v-btn class="mt-3" color="primary" @click="login" block>Login</v-btn>
       <v-btn
         class="mt-4"
         text
@@ -38,7 +38,6 @@
         >Create account</v-btn
       >
     </v-form>
-    <div class="bg"></div>
   </div>
 </template>
 
