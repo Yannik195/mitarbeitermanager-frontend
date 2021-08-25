@@ -60,17 +60,29 @@ export default {
   },
   methods: {
     login: function () {
+      // data to be sent to backend server
       const data = { email: this.email, password: this.password };
+
+      // perform rest api call
       axios
         .post("http://localhost:3000/auth/login", data)
         .then((result) => {
-          console.log(result.data.accessToken);
+          // create variables for token and uid
           const accessToken = result.data.accessToken;
+          const uid = result.data.uid;
+
+          // Save token in vuex
           this.$store.commit("updateAccessToken", { accessToken });
-          console.log(this.$store.state);
+
+          // redirect to overview
           this.$router.push("/overview");
+
+          // Save token and uid in local storage
           localStorage.setItem("access-token", accessToken);
+          localStorage.setItem("uid", uid);
         })
+        // log error: wrong email / password
+        // todo show ui what went wrong
         .catch((err) => {
           console.log(err);
         });

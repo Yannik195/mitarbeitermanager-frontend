@@ -64,10 +64,13 @@ export default {
   watch: {},
   methods: {
     getEmployees: function () {
-      console.log("getEmployees" + localStorage.getItem("access-token"));
+      // create header to be sent to backend server
       const config = {
         headers: { authorization: localStorage.getItem("access-token") },
       };
+
+      // perform rest api call to get all employees
+      //change so only logged in user data gets loaded via uid from local storage
       axios
         .get("http://localhost:3000/employees/", config)
         .catch((err) => {
@@ -78,7 +81,6 @@ export default {
     },
   },
   mounted() {
-    // this.getUserData();
     this.getEmployees();
   },
 };

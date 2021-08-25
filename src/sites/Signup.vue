@@ -11,6 +11,7 @@
         >
         </v-text-field>
 
+        <!-- password text field -->
         <v-text-field
           v-model="password"
           :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
@@ -24,9 +25,12 @@
           outlined
         ></v-text-field>
 
+        <!-- create account button -->
         <v-btn class="mr-2" color="primary" @click="signup"
           >Create Account</v-btn
         >
+
+        <!-- redirect to login instead -->
         <v-btn text color="primary" @click="$router.push('login')">Login</v-btn>
       </v-form>
     </v-card>
@@ -59,16 +63,26 @@ export default {
   },
   methods: {
     signup: function () {
+      // data to be sent to backend server
       const data = { email: this.email, password: this.password };
+
+      // perform api call to create new user
       axios
         .post("http://localhost:3000/auth/signup", data)
         .then((result) => {
-          console.log(result);
+          // create variable for token and uid
           const accessToken = result.data.accessToken;
+          const uid = result.data.uid;
+
+          // save token and uid to local storage
           localStorage.setItem("access-token", accessToken);
+          localStorage.setItem("uid", uid);
+
+          // push to overview
           this.$router.push("/overview");
         })
         .catch((err) => {
+          // todo if user already exists show ui message
           console.log(err);
         });
     },
