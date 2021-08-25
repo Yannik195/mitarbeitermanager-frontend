@@ -66,7 +66,10 @@ export default {
     getEmployees: function () {
       // create header to be sent to backend server
       const config = {
-        headers: { authorization: localStorage.getItem("access-token") },
+        headers: {
+          authorization: localStorage.getItem("access-token"),
+          employeeID: localStorage.getItem("uid"),
+        },
       };
 
       // perform rest api call to get all employees

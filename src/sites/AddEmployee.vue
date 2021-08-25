@@ -445,6 +445,7 @@ export default {
     postEmployee: function () {
       axios
         .post("http://localhost:3000/employees/", {
+          employerID: localStorage.getItem("uid"),
           firstname: this.firstname,
           lastname: this.lastname,
           email: this.email,
