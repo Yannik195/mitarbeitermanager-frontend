@@ -1,35 +1,40 @@
 <template>
-  <div class="container">
-    <v-card class="card py-8 px-4 ma-4">
-      <v-form>
-        <v-text-field
-          v-model="email"
-          outlined
-          label="Email"
-          append-icon="mdi-email"
-          :rules="emailRules"
-        >
-        </v-text-field>
+  <div class="containerr">
+    <v-form class="form pa-4 ma-4">
+      <h1 class="mb-8 mt-4">Welcome back!</h1>
 
-        <v-text-field
-          v-model="password"
-          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-          :rules="[rules.required, rules.min]"
-          :type="show1 ? 'text' : 'password'"
-          name="input-10-1"
-          label="Password"
-          hint="At least 8 characters"
-          counter
-          @click:append="show1 = !show1"
-          outlined
-        ></v-text-field>
+      <v-text-field
+        v-model="email"
+        outlined
+        label="Email"
+        append-icon="mdi-email"
+        :rules="emailRules"
+      >
+      </v-text-field>
 
-        <v-btn class="mr-2" color="primary" @click="login">Login</v-btn>
-        <v-btn text color="primary" @click="$router.push('signup')"
-          >Create account</v-btn
-        >
-      </v-form>
-    </v-card>
+      <v-text-field
+        v-model="password"
+        :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+        :rules="[rules.required, rules.min]"
+        :type="show1 ? 'text' : 'password'"
+        name="input-10-1"
+        label="Password"
+        hint="At least 8 characters"
+        counter
+        @click:append="show1 = !show1"
+        outlined
+      ></v-text-field>
+
+      <v-btn color="primary mt-4" @click="login" block>Login</v-btn>
+      <v-btn
+        class="mt-4"
+        text
+        small
+        color="primary"
+        @click="$router.push('signup')"
+        >Create account</v-btn
+      >
+    </v-form>
     <div class="bg"></div>
   </div>
 </template>
@@ -92,13 +97,23 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100vw;
+.containerr {
+  background: url(https://app-cdn.clickup.com/login-bg.fcb221668da96b8a1817.svg)
+    bottom/cover no-repeat;
   height: 100vh;
-  background-color: #ee5522;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 200 200'%3E%3Cdefs%3E%3ClinearGradient id='a' gradientUnits='userSpaceOnUse' x1='100' y1='33' x2='100' y2='-3'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' gradientUnits='userSpaceOnUse' x1='100' y1='135' x2='100' y2='97'%3E%3Cstop offset='0' stop-color='%23000' stop-opacity='0'/%3E%3Cstop offset='1' stop-color='%23000' stop-opacity='1'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg fill='%23d23d09' fill-opacity='0.6'%3E%3Crect x='100' width='100' height='100'/%3E%3Crect y='100' width='100' height='100'/%3E%3C/g%3E%3Cg fill-opacity='0.5'%3E%3Cpolygon fill='url(%23a)' points='100 30 0 0 200 0'/%3E%3Cpolygon fill='url(%23b)' points='100 100 0 130 0 100 200 100 200 130'/%3E%3C/g%3E%3C/svg%3E");
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form {
+  box-shadow: 0 25px 75px rgb(16 30 54 / 25%);
+  border-radius: 6px;
+  display: grid;
+  text-align: center;
+  justify-content: center;
+  background: #ffff;
+}
+
+h1 {
 }
 </style>

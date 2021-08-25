@@ -1,18 +1,5 @@
 <template>
   <v-app>
-    <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
-        <h2>MitarbeiterManager</h2>
-      </div>
-
-      <v-spacer></v-spacer>
-
-      <v-btn target="_blank" text @click="logout">
-        <span class="mr-2">Logout</span>
-        <v-icon>mdi-open-in-new</v-icon>
-      </v-btn>
-    </v-app-bar>
-
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -38,4 +25,5 @@ export default {
 </script>
 
 <style>
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
 </style>
