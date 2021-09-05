@@ -1,5 +1,6 @@
 <template>
   <v-app>
+    {{ windowWidth }}
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -13,13 +14,27 @@ export default {
   components: {},
 
   data: () => ({
-    //
+    windowWidth: window.innerWidth,
   }),
   methods: {
     logout: function () {
       this.$router.push("/login");
       localStorage.clear();
     },
+    onResize() {
+      this.windowWidth = window.innerWidth;
+    },
+  },
+  watch: {},
+
+  mounted() {
+    this.$nextTick(() => {
+      window.addEventListener("resize", this.onResize);
+    });
+  },
+
+  beforeDestroy() {
+    window.removeEventListener("resize", this.onResize);
   },
 };
 </script>
