@@ -1,6 +1,7 @@
 <template>
   <v-app>
-    {{ windowWidth }}
+    <DesktopNav v-if="windowWidth >= 600"></DesktopNav>
+    <MobileNav v-else></MobileNav>
     <v-main>
       <router-view></router-view>
     </v-main>
@@ -8,10 +9,16 @@
 </template>
 
 <script>
+import DesktopNav from "./components/DesktopNav.vue";
+import MobileNav from "./components/MobileNav.vue";
+
 export default {
   name: "App",
 
-  components: {},
+  components: {
+    DesktopNav,
+    MobileNav,
+  },
 
   data: () => ({
     windowWidth: window.innerWidth,
@@ -41,4 +48,10 @@ export default {
 
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;700&display=swap");
+
+html {
+  font-family: "Nunito", sans-serif;
+  font-weight: 400;
+}
 </style>
