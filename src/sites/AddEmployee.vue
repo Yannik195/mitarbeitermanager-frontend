@@ -2,7 +2,7 @@
   <v-form v-model="valid">
     <v-container>
       <v-row>
-        <v-col cols="12" md="4">
+        <v-col cols="12" sm="4">
           <v-text-field
             v-model="firstname"
             :rules="nameRules"
@@ -11,7 +11,7 @@
           ></v-text-field>
         </v-col>
 
-        <v-col cols="12" md="4">
+        <v-col cols="12" sm="4">
           <v-text-field
             v-model="lastname"
             :rules="nameRules"
@@ -20,7 +20,7 @@
           ></v-text-field>
         </v-col>
 
-        <v-col cols="12" md="4">
+        <v-col cols="12" sm="4">
           <v-text-field
             v-model="email"
             :rules="emailRules"
@@ -82,39 +82,58 @@
       <v-text-field v-model="phone" label="Phone Number"></v-text-field>
 
       <!-- Adress -->
-      <!-- Street -->
-      <v-text-field v-model="street" label="Street"> </v-text-field>
-      <!-- Number -->
-      <v-text-field v-model="number" label="Number"> </v-text-field>
-      <!-- Postcode -->
-      <v-text-field v-model="postcode" label="Postcode"> </v-text-field>
-      <!-- Country -->
-      <v-autocomplete v-model="country" label="Country" :items="countryList">
-      </v-autocomplete>
+      <v-row>
+        <!-- Street -->
+        <v-col cols="6" sm="3">
+          <v-text-field v-model="street" label="Street"> </v-text-field>
+        </v-col>
+        <!-- Number -->
+        <v-col cols="6" sm="3">
+          <v-text-field v-model="number" label="Number"> </v-text-field>
+        </v-col>
+        <!-- Postcode -->
+        <v-col cols="6" sm="3">
+          <v-text-field v-model="postcode" label="Postcode"> </v-text-field>
+        </v-col>
+        <!-- Country -->
+        <v-col cols="6" sm="3">
+          <v-autocomplete
+            v-model="country"
+            label="Country"
+            :items="countryList"
+          ></v-autocomplete>
+        </v-col>
+      </v-row>
 
-      <!-- //Salary -->
-      <v-autocomplete
-        v-model="salary"
-        label="Salary"
-        prefix="€"
-        :items="[
-          '10.000',
-          '20.000',
-          '30.000',
-          '40.000',
-          '50.000',
-          '60.000',
-          '70.000',
-        ]"
-      >
-      </v-autocomplete>
+      <v-row>
+        <!-- //Salary -->
+        <v-col cols="4">
+          <v-autocomplete
+            v-model="salary"
+            label="Salary"
+            prefix="€"
+            :items="[
+              '10.000',
+              '20.000',
+              '30.000',
+              '40.000',
+              '50.000',
+              '60.000',
+              '70.000',
+            ]"
+          >
+          </v-autocomplete>
+        </v-col>
 
-      <!-- Position -->
-      <v-autocomplete
-        v-model="position"
-        :items="['Accountant', 'CEO', 'Web Developer']"
-        label="Position"
-      ></v-autocomplete>
+        <!-- Position -->
+        <v-col cols="8">
+          <v-autocomplete
+            v-model="position"
+            :items="['Accountant', 'CEO', 'Web Developer']"
+            label="Position"
+          ></v-autocomplete>
+        </v-col>
+      </v-row>
 
       <v-row>
         <v-col>
